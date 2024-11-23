@@ -1,0 +1,118 @@
+<title>Painel do Professor</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        margin: 20px auto;
+        max-width: 800px;
+    }
+
+    .header {
+        background-color: #007bff;
+        color: white;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .button-container {
+        text-align: right;
+        margin: 20px 0;
+    }
+
+    .button-container button {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    table th,
+    table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+
+    table th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+
+    .btn-excluir {
+        background-color: #ff6b6b;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 3px;
+    }
+
+    .btn-visualizar {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 3px;
+    }
+
+    .btn-excluir:hover {
+        background-color: #ff4c4c;
+    }
+
+    .btn-visualizar:hover {
+        background-color: #218838;
+    }
+</style>
+<div class="header">
+    <span>Nome do Professor</span>
+    <a href="/logout">Sair</a>
+</div>
+
+<div class="container">
+    <div class="button-container">
+        <button onclick="location.href='/cadastrarTurma'">Cadastrar turma</button>
+    </div>
+    {{#each turmas}}
+    <table>
+        <thead>
+            <tr>
+                <th>Número</th>
+                <th>Nome</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{this.id}}</td>
+                <td>{{this.nome}}</td>
+                <td>
+                    <button class="btn-excluir" onclick="location.href='/deleteTurma/{{this.id}}'">Excluir</button>
+                    <button class="btn-visualizar" onclick="location.href='/atividades/1'">Visualizar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    {{/each}}
+</div>

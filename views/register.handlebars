@@ -1,0 +1,40 @@
+    <style>
+        #aviso-senha {
+            color: red;
+            font-weight: bold;
+            font-size: smaller;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4">Register</h2>
+        <form action="/register" method="post">
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" class="form-control" id="nome" name="nome" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="senha">Senha:</label>
+                <div class="input-group">
+                    <input type="password" class="form-control" id="senha" name="senha" required>
+                    <div class="input-group-append">
+                        <button type="button" class="btn btn-outline-secondary" id="toggle-senha">Mostrar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="senha-confirm">Confirmar senha:</label>
+                <input type="password" class="form-control" id="senha-confirm" name="senha-confirm" required>
+            </div>
+            <div id="aviso-senha" class="mb-3"></div>
+            <button type="submit" class="btn btn-primary">Registrar</button>
+            <a class="btn btn-primary ml-3" href="/"><b>Sair</b></a>
+        </form>
+    </div>
+
+<script src="/JS/register.js"></script>
