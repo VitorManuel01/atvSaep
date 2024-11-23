@@ -86,7 +86,7 @@
     }
 </style>
 <div class="header">
-    <span>Nome do Professor</span>
+    <span>Bem-vindo, {{professor.nome}}</span>
     <a href="/logout">Sair</a>
 </div>
 
@@ -94,7 +94,7 @@
     <div class="button-container">
         <button onclick="location.href='/cadastrarTurma'">Cadastrar turma</button>
     </div>
-    {{#each turmas}}
+    {{#if turma.length}}
     <table>
         <thead>
             <tr>
@@ -104,15 +104,21 @@
             </tr>
         </thead>
         <tbody>
+            {{#each turma}}
             <tr>
                 <td>{{this.id}}</td>
                 <td>{{this.nome}}</td>
                 <td>
-                    <button class="btn-excluir" onclick="location.href='/deleteTurma/{{this.id}}'">Excluir</button>
-                    <button class="btn-visualizar" onclick="location.href='/atividades/1'">Visualizar</button>
+                    <form action="/deleteTurma/{{this.id}}" method="POST">
+                        <button class="btn-excluir">Excluir</button>
+                    </form>  
+                    <button class="btn-visualizar" onclick="location.href='/atividades/{{this.id}}'">Visualizar</button>
                 </td>
             </tr>
+            {{/each}}
         </tbody>
     </table>
-    {{/each}}
+    {{else}}
+    <p>Não há turmas cadastradas.</p>
+    {{/if}}
 </div>
