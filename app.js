@@ -98,15 +98,16 @@ app.get('/turmas', isLoggedIn, async (req, res) => {
     }
 });
 
-app.post('/turma', async (req, res) => {
+app.post('/turma', isLoggedIn, async (req, res) => {
     try {
-        const nome = req.body.nome;
+        const nome = req.body.name;
 
         const turma = {
             nome: nome,
         };
 
         // Salvar a cotação no banco de dados usando Sequelize
+        console.log(turma);
         const novaTurma = await Turma.create(turma);
 
         // Adicionar a cotação ao array de cotações temporárias
